@@ -19,12 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="03661026-482d-41f6-821a-c8b25209063f" name="Default Changelist" comment="Создал таблицу, добавил миграцию и модельку, сделал редирект по существующим в базе записям">
-      <change afterPath="$PROJECT_DIR$/app/Models/Redirect.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/database/migrations/2020_08_11_131657_create_redirect_table.php" afterDir="false" />
+    <list default="true" id="03661026-482d-41f6-821a-c8b25209063f" name="Default Changelist" comment="gitignore">
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/RedirectController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/RedirectController.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -176,7 +173,8 @@
       <workItem from="1597061901296" duration="5956000" />
       <workItem from="1597069729268" duration="307000" />
       <workItem from="1597070236141" duration="100000" />
-      <workItem from="1597151575261" duration="4879000" />
+      <workItem from="1597151575261" duration="5153000" />
+      <workItem from="1597233365647" duration="88000" />
     </task>
     <task id="LOCAL-00001" summary="initial commit">
       <created>1597069905256</created>
@@ -185,7 +183,21 @@
       <option name="project" value="LOCAL" />
       <updated>1597069905256</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Создал таблицу, добавил миграцию и модельку, сделал редирект по существующим в базе записям. Осталась форма, проверки вводимых значений, рюшечки и бантики">
+      <created>1597156624978</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1597156624978</updated>
+    </task>
+    <task id="LOCAL-00003" summary="gitignore">
+      <created>1597156683991</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1597156683991</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -206,7 +218,9 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="initial commit" />
     <MESSAGE value="Создал таблицу, добавил миграцию и модельку, сделал редирект по существующим в базе записям" />
-    <option name="LAST_COMMIT_MESSAGE" value="Создал таблицу, добавил миграцию и модельку, сделал редирект по существующим в базе записям" />
+    <MESSAGE value="Создал таблицу, добавил миграцию и модельку, сделал редирект по существующим в базе записям. Осталась форма, проверки вводимых значений, рюшечки и бантики" />
+    <MESSAGE value="gitignore" />
+    <option name="LAST_COMMIT_MESSAGE" value="gitignore" />
   </component>
   <component name="WindowStateProjectService">
     <state width="1874" height="218" key="GridCell.Tab.0.bottom" timestamp="1597069694020">
@@ -229,10 +243,10 @@
       <screen x="0" y="27" width="1920" height="880" />
     </state>
     <state x="449" y="102" width="1022" height="737" key="SettingsEditor/0.27.1920.880@0.27.1920.880" timestamp="1597153995833" />
-    <state x="555" y="203" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1597069928846">
+    <state x="555" y="203" width="800" height="535" key="Vcs.Push.Dialog.v2" timestamp="1597156697395">
       <screen x="0" y="27" width="1920" height="880" />
     </state>
-    <state x="555" y="203" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.880@0.27.1920.880" timestamp="1597069928846" />
+    <state x="555" y="203" width="800" height="535" key="Vcs.Push.Dialog.v2/0.27.1920.880@0.27.1920.880" timestamp="1597156697395" />
     <state x="741" y="382" width="438" height="177" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597156250576">
       <screen x="0" y="27" width="1920" height="880" />
     </state>
