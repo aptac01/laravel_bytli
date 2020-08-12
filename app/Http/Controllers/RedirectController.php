@@ -5,49 +5,71 @@ namespace App\Http\Controllers;
 use DateTime;
 use Illuminate\Http\Request;
 use App\Models\Redirect;
-use Redirect as system_redirect;
 
 class RedirectController extends Controller
 {
-    //
-    public function index()
+    /**
+     * Принимаем длинную ссылку, если всё правильно - генерируем и отдаем короткую
+     * если неправильно - показываем ошибку
+     *
+     * @param Request $request
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function index(Request $request)
     {
-        // todo: добавить поле с submit кнопкой, по сабмиту:
-        //  принимать адрес
-        //  показывать итоговую ссылку
-        //  итоговую ссылку показывать в этой же вьюшке
+        if ($request->has('link')) {
+            $data = $request->validate([
+                'link' => 'required|url|max:1745',
+            ]);
 
-        // добавлять временную переменную к адресу и генерить crc32 hash
-        // сохранять hash в базу, выставлять счетчик == 5
+            $str = $data['link'] . (new DateTime())->getTimestamp();
 
-        // таблица - id(autogen_sequence) - hash - counter - payload(link)
-        $date = new DateTime();
+            $checksum = crc32($str);
 
-        $strPayload = 'http://pornhub.com/'; // Не знаю почему, но именно этот сайт пришел первый в голову
-        $str = $strPayload . $date->getTimestamp();
+            $redirect = new Redirect();
+            $redirect->hash = $checksum;
+            $redirect->payload = $data['link'];
+            $redirect->save();
+        } else {
+            $data = null;
+            $checksum = null;
+        }
 
-        $checksum = crc32($str);
-
-        $redirect = new Redirect();
-        $redirect->hash = $checksum;
-        $redirect->payload = $strPayload;
-        $redirect->save();
-
-        return view('welcome');
+        return view('redirectMaker', [
+            'data' => $data,
+            'checksum' => $checksum,
+        ]);
     }
 
-    public function redirect($hash) {
-        // todo: понять что $hash - это действительно хеш а не рандомная строка
+    public function clear(Request $request) {
+        $request = new Request();
+        return redirect('/');
+    }
 
-        // выбрать из базы записи с таким хешем, посмотреть счетчик, если счетчик == 0 - 404
-        // если не 0 - уменьшить его на один и редиректнуть на payload
+    /**
+     * Если hash - валидный неистекший хэш, который сохранен в базе - редиректим на ссылку из базы
+     * иначе - 404
+     * @param $hash
+     * @return mixed
+     */
+    public function redirect($hash) {
+
+        $re = '/\d{7,}/m';
+
+        if (preg_match_all($re, $hash, $matches, PREG_SET_ORDER, 0) == 0) {
+            abort(404);
+        }
 
         $result = Redirect::where('hash', $hash)->first();
+
+        if (empty($result)) {
+            abort(404);
+        }
 
         if ($result->counter > 0) {
             --$result->counter;
             $result->save();
-            return system_redirect::to($result->payload);
+            return redirect($result->payload);
         } else {
             abort(404);
         }

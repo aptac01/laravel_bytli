@@ -12,4 +12,6 @@
 */
 
 Route::get('/', 'RedirectController@index');
+Route::post('/', 'RedirectController@index');
+Route::post('/clear', 'RedirectController@clear');
 Route::get('/{hash}', 'RedirectController@redirect');

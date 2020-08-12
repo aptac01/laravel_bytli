@@ -7,13 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 /**
  * Class Redirect
  *
- * Модель для таблицы, в которой хранятся сцылки
+ * Модель для таблицы, в которой хранятся ссылки с временными короткими роутами
  *
  * @package App
  */
 class Redirect extends Model
 {
-    //
     protected $table = 'redirect';
     protected $primaryKey = 'id';
 
