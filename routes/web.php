@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Support\Facades\Route;
+
 Route::get('/', 'RedirectController@index');
 Route::post('/', 'RedirectController@index');
 Route::post('/clear', 'RedirectController@clear');
