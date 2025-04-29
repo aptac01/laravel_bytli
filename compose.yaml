@@ -1,0 +1,21 @@
+name: bytli
+services:
+  laravel:
+    container_name: bytli_laravel
+    ports:
+      - 4242:3000
+    volumes:
+      - ~/code/bytli:/app
+    image: bitnami/laravel:6.20.1-debian-10-r108
+    command: /bin/bash -c "php artisan serve --host=0.0.0.0 --port=3000"
+    depends_on:
+      - mysql_db
+  mysql_db:
+    image: mysql/mysql-server:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: your_root_password
+      MYSQL_DATABASE: bytli
+      MYSQL_USER: bytli_user
+      MYSQL_PASSWORD: bytli_Password123!
+    ports:
+      - "3308:3306"
